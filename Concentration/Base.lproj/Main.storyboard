@@ -81,6 +81,7 @@
                         <outletCollection property="buttonCollection" destination="fhs-j2-7a3" collectionClass="NSMutableArray" id="vCh-cE-4rj"/>
                         <outletCollection property="buttonCollection" destination="f43-OQ-MfY" collectionClass="NSMutableArray" id="WCK-67-ZUr"/>
                         <outletCollection property="buttonCollection" destination="gdW-uO-7ok" collectionClass="NSMutableArray" id="4FF-3o-Y5V"/>
+                        <outletCollection property="buttonCollection" destination="au5-In-jDM" collectionClass="NSMutableArray" id="RgY-fU-hDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
