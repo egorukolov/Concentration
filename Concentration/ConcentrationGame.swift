@@ -9,9 +9,28 @@ import Foundation
 
 class ConcentrationGame {
     
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     
-    var indexOfOnAndOnlyFaceUpCard: Int?
+    private var indexOfOnAndOnlyFaceUpCard: Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp {
+                    if foundIndex == nil {
+                        foundIndex = index
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     func chooseCard (at index: Int) {
         if !cards[index].isMatched {
@@ -21,19 +40,15 @@ class ConcentrationGame {
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOnAndOnlyFaceUpCard = nil
                 
             } else {
-                for flipDown in cards.indices {
-                    cards[flipDown].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
-                indexOfOnAndOnlyFaceUpCard =  index
+                indexOfOnAndOnlyFaceUpCard = index
             }
         }
     }
     
     init(numberPairsOfCards: Int) {
+        assert(numberPairsOfCards > 0, "Concentration.init(\(numberPairsOfCards): must have at least one pair of cards")
         for _ in 1...numberPairsOfCards {
             let card = Card()
             cards.append(card)
